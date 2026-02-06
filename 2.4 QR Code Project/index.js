@@ -6,6 +6,7 @@
 import inquirer from 'inquirer';
 import qr from 'qr-image';
 import fs from 'fs';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 
 // Function to prompt user for a URL
 inquirer
@@ -27,8 +28,10 @@ inquirer
   })
   .catch((error) => {
     if (error.isTtyError) {
+      console.log("Prompt couldn't be rendered in the current environment");
       // Prompt couldn't be rendered in the current environment
     } else {
+      console.log("Something went wrong");
       // Something else went wrong
     }
   });
